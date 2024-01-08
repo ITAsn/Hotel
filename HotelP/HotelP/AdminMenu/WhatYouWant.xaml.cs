@@ -15,14 +15,23 @@ using System.Windows.Shapes;
 
 namespace HotelP.AdminMenu
 {
-    /// <summary>
-    /// Логика взаимодействия для WhatYouWant.xaml
-    /// </summary>
+ //Admin menu for create rooms and watch booking.
     public partial class WhatYouWant : Page
     {
         public WhatYouWant()
         {
             InitializeComponent();
+        }
+        private void CreateButton(object sender, RoutedEventArgs e)
+        {
+            RoomCreater roomCreater = new RoomCreater();
+            App.MainFrame.Navigate(roomCreater);
+        }
+
+        private void WatchBook(object sender, RoutedEventArgs e)
+        {
+            BookingShower bookingShower = new BookingShower();
+            App.MainFrame.Navigate(bookingShower);
         }
     }
 }

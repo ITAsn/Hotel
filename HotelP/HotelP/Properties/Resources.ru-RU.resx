@@ -129,14 +129,26 @@
   <data name="ButtonBuy" xml:space="preserve">
     <value>Купить</value>
   </data>
+  <data name="ButtonCreate" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="ButtonCreateRoom" xml:space="preserve">
+    <value>Создать комнату</value>
+  </data>
   <data name="ButtonFind" xml:space="preserve">
     <value>Найти</value>
   </data>
   <data name="ButtonFinder" xml:space="preserve">
     <value>Найти заказ</value>
   </data>
+  <data name="ButtonLoad" xml:space="preserve">
+    <value>Загрузить фото</value>
+  </data>
   <data name="ButtonShop" xml:space="preserve">
     <value>Магазин</value>
+  </data>
+  <data name="ButtonWatchBook" xml:space="preserve">
+    <value>Просмотр бронирований</value>
   </data>
   <data name="HeaderContact" xml:space="preserve">
     <value>Введите свои контактные данные</value>

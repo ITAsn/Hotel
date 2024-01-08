@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,14 +16,14 @@ using System.Windows.Shapes;
 
 namespace HotelP.AdminMenu
 {
-    /// <summary>
-    /// Логика взаимодействия для BookingShower.xaml
-    /// </summary>
+ //Page for watch bookings. Can not change data.
     public partial class BookingShower : Page
     {
+        HotelBaseEntities bd = new HotelBaseEntities();
         public BookingShower()
         {
             InitializeComponent();
+            DataGrid.ItemsSource = bd.Bookings.ToList();
         }
     }
 }

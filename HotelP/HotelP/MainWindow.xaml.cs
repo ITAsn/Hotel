@@ -1,4 +1,5 @@
-﻿using HotelP.Checker;
+﻿using HotelP.AdminMenu;
+using HotelP.Checker;
 using HotelP.Shop;
 using System;
 using System.Collections.Generic;
@@ -88,7 +89,17 @@ namespace HotelP
 
         private void Button_Click_4(object sender, RoutedEventArgs e)//To watch admin menu
         {
+            try
+            {
 
+                WhatYouWant youWant = new WhatYouWant();
+                App.MainFrame.NavigationService.Navigate(youWant);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CultureRU(object sender, RoutedEventArgs e)//Change language on rus

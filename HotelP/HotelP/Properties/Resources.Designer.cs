@@ -97,6 +97,24 @@ namespace HotelP.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Create.
+        /// </summary>
+        public static string ButtonCreate {
+            get {
+                return ResourceManager.GetString("ButtonCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Create room.
+        /// </summary>
+        public static string ButtonCreateRoom {
+            get {
+                return ResourceManager.GetString("ButtonCreateRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Find.
         /// </summary>
         public static string ButtonFind {
@@ -115,11 +133,29 @@ namespace HotelP.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Load image.
+        /// </summary>
+        public static string ButtonLoad {
+            get {
+                return ResourceManager.GetString("ButtonLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Shop.
         /// </summary>
         public static string ButtonShop {
             get {
                 return ResourceManager.GetString("ButtonShop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Watch book.
+        /// </summary>
+        public static string ButtonWatchBook {
+            get {
+                return ResourceManager.GetString("ButtonWatchBook", resourceCulture);
             }
         }
         
@@ -381,6 +417,24 @@ namespace HotelP.Properties {
         public static string MessBChooseDate {
             get {
                 return ResourceManager.GetString("MessBChooseDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на There are too many rooms.
+        /// </summary>
+        public static string MessBCount {
+            get {
+                return ResourceManager.GetString("MessBCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Successfully.
+        /// </summary>
+        public static string MessBSucces {
+            get {
+                return ResourceManager.GetString("MessBSucces", resourceCulture);
             }
         }
         

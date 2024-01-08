@@ -129,14 +129,26 @@
   <data name="ButtonBuy" xml:space="preserve">
     <value>Buy</value>
   </data>
+  <data name="ButtonCreate" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="ButtonCreateRoom" xml:space="preserve">
+    <value>Create room</value>
+  </data>
   <data name="ButtonFind" xml:space="preserve">
     <value>Find</value>
   </data>
   <data name="ButtonFinder" xml:space="preserve">
     <value>Find an order</value>
   </data>
+  <data name="ButtonLoad" xml:space="preserve">
+    <value>Load image</value>
+  </data>
   <data name="ButtonShop" xml:space="preserve">
     <value>Shop</value>
+  </data>
+  <data name="ButtonWatchBook" xml:space="preserve">
+    <value>Watch book</value>
   </data>
   <data name="HeaderContact" xml:space="preserve">
     <value>Enter your contact details</value>

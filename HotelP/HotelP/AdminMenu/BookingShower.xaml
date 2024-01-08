@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BookingShower">
 
-    <Grid>
+    <DataGrid Foreground="Black" Background="Transparent" Name="DataGrid">
         
-    </Grid>
+    </DataGrid>
 </Page>

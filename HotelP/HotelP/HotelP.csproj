@@ -138,6 +138,7 @@
     <Compile Include="Default2.xaml.cs">
       <DependentUpon>Default2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Shop\Conveerter.cs" />
     <Compile Include="Shop\ShopMenu.xaml.cs">
       <DependentUpon>ShopMenu.xaml</DependentUpon>
     </Compile>
