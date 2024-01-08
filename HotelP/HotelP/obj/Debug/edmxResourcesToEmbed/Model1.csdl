@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HotelBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="IDBooking" />
+    </Key>
+    <Property Name="IDBooking" Type="Int32" Nullable="false" />
+    <Property Name="IDRoom" Type="Int32" Nullable="false" />
+    <Property Name="KeyRoom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BookingWhen" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="BookingIn" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="BookingOut" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EmailOrPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HotelRooms" Relationship="Self.FK_Bookings_HotelRooms" FromRole="Bookings" ToRole="HotelRooms" />
+  </EntityType>
+  <EntityType Name="HotelRooms">
+    <Key>
+      <PropertyRef Name="IDRoom" />
+    </Key>
+    <Property Name="IDRoom" Type="Int32" Nullable="false" />
+    <Property Name="IDHotel" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Int32" Nullable="false" />
+    <Property Name="Coments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoomsCount" Type="Int32" Nullable="false" />
+    <Property Name="TakedTimes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImageRoom" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Bookings_HotelRooms" FromRole="HotelRooms" ToRole="Bookings" />
+    <NavigationProperty Name="Hotels" Relationship="Self.FK_HotelRooms_Hotels" FromRole="HotelRooms" ToRole="Hotels" />
+  </EntityType>
+  <EntityType Name="Hotels">
+    <Key>
+      <PropertyRef Name="IDHotel" />
+    </Key>
+    <Property Name="IDHotel" Type="Int32" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoomsCount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HotelRooms" Relationship="Self.FK_HotelRooms_Hotels" FromRole="Hotels" ToRole="HotelRooms" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="MSchange_tracking_history">
+    <Key>
+      <PropertyRef Name="internal_table_name" />
+      <PropertyRef Name="table_name" />
+      <PropertyRef Name="start_time" />
+      <PropertyRef Name="end_time" />
+      <PropertyRef Name="rows_cleaned_up" />
+      <PropertyRef Name="cleanup_version" />
+      <PropertyRef Name="comments" />
+    </Key>
+    <Property Name="internal_table_name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="table_name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="start_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="end_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="rows_cleaned_up" Type="Int64" Nullable="false" />
+    <Property Name="cleanup_version" Type="Int64" Nullable="false" />
+    <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Bookings_HotelRooms">
+    <End Role="HotelRooms" Type="Self.HotelRooms" Multiplicity="1" />
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelRooms">
+        <PropertyRef Name="IDRoom" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="IDRoom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HotelRooms_Hotels">
+    <End Role="Hotels" Type="Self.Hotels" Multiplicity="1" />
+    <End Role="HotelRooms" Type="Self.HotelRooms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotels">
+        <PropertyRef Name="IDHotel" />
+      </Principal>
+      <Dependent Role="HotelRooms">
+        <PropertyRef Name="IDHotel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HotelBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bookings" EntityType="Self.Bookings" />
+    <EntitySet Name="HotelRooms" EntityType="Self.HotelRooms" />
+    <EntitySet Name="Hotels" EntityType="Self.Hotels" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="MSchange_tracking_history" EntityType="Self.MSchange_tracking_history" />
+    <AssociationSet Name="FK_Bookings_HotelRooms" Association="Self.FK_Bookings_HotelRooms">
+      <End Role="HotelRooms" EntitySet="HotelRooms" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HotelRooms_Hotels" Association="Self.FK_HotelRooms_Hotels">
+      <End Role="Hotels" EntitySet="Hotels" />
+      <End Role="HotelRooms" EntitySet="HotelRooms" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

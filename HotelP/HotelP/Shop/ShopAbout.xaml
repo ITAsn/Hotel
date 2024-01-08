@@ -1,0 +1,53 @@
+﻿<Page x:Class="HotelP.Shop.ShopAbout"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HotelP.Shop"
+      mc:Ignorable="d" 
+      xmlns:rs="clr-namespace:HotelP.Properties"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ShopAbout">
+    <ScrollViewer>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Name="Im" Height="300"  Source="/Photo/Unknow.png" />
+        <StackPanel Grid.Column="1">
+                <TextBlock Foreground="White" FontSize="20" Text="{x:Static rs:Resources.LabelCharacteristic}"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="10" Foreground="White" Text="{x:Static rs:Resources.LabelRoomNumber}"></TextBlock>
+                <TextBlock Name="IdB" Margin="10" Foreground="White">?????</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="10" Foreground="White" Text="{x:Static rs:Resources.LabelCost}"></TextBlock>
+                <TextBlock Name="CostName" Margin="10" Foreground="White">?????</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="10" Foreground="White" Text="{x:Static rs:Resources.LabelCount}"></TextBlock>
+                <TextBlock Name="Count" Margin="10" Foreground="White">?????</TextBlock>
+            </StackPanel>
+           
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                <TextBlock Margin="5" Foreground="White" FontSize="20" Text="{x:Static rs:Resources.LabelDescription}" ></TextBlock>
+                <TextBlock Name="Com"  TextWrapping="Wrap" Margin="5" Foreground="White" Text="{x:Static rs:Resources.LabelNotFoundNoOrder}"></TextBlock>
+            <Button Content="{x:Static rs:Resources.ButtonBuy}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" BorderBrush="White" BorderThickness="1" Click="Button_Click" Background="Transparent" Foreground="White" Width="150">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources> 
+            </Button>
+        </StackPanel>
+    </Grid>
+    </ScrollViewer>
+</Page>

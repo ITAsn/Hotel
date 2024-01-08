@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище HotelBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="IDBooking" />
+    </Key>
+    <Property Name="IDBooking" Type="int" Nullable="false" />
+    <Property Name="IDRoom" Type="int" Nullable="false" />
+    <Property Name="KeyRoom" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BookingWhen" Type="date" Nullable="false" />
+    <Property Name="BookingIn" Type="date" Nullable="false" />
+    <Property Name="BookingOut" Type="date" Nullable="false" />
+    <Property Name="EmailOrPhone" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="HotelRooms">
+    <Key>
+      <PropertyRef Name="IDRoom" />
+    </Key>
+    <Property Name="IDRoom" Type="int" Nullable="false" />
+    <Property Name="IDHotel" Type="int" Nullable="false" />
+    <Property Name="Cost" Type="int" Nullable="false" />
+    <Property Name="Coments" Type="text" Nullable="false" />
+    <Property Name="RoomsCount" Type="int" Nullable="false" />
+    <Property Name="TakedTimes" Type="text" Nullable="false" />
+    <Property Name="ImageRoom" Type="image" />
+  </EntityType>
+  <EntityType Name="Hotels">
+    <Key>
+      <PropertyRef Name="IDHotel" />
+    </Key>
+    <Property Name="IDHotel" Type="int" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="RoomsCount" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "HotelBase.dbo.MSchange_tracking_history" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="MSchange_tracking_history">
+    <Key>
+      <PropertyRef Name="internal_table_name" />
+      <PropertyRef Name="table_name" />
+      <PropertyRef Name="start_time" />
+      <PropertyRef Name="end_time" />
+      <PropertyRef Name="rows_cleaned_up" />
+      <PropertyRef Name="cleanup_version" />
+      <PropertyRef Name="comments" />
+    </Key>
+    <Property Name="internal_table_name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="table_name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="start_time" Type="datetime" Nullable="false" />
+    <Property Name="end_time" Type="datetime" Nullable="false" />
+    <Property Name="rows_cleaned_up" Type="bigint" Nullable="false" />
+    <Property Name="cleanup_version" Type="bigint" Nullable="false" />
+    <Property Name="comments" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Bookings_HotelRooms">
+    <End Role="HotelRooms" Type="Self.HotelRooms" Multiplicity="1" />
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelRooms">
+        <PropertyRef Name="IDRoom" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="IDRoom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HotelRooms_Hotels">
+    <End Role="Hotels" Type="Self.Hotels" Multiplicity="1" />
+    <End Role="HotelRooms" Type="Self.HotelRooms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotels">
+        <PropertyRef Name="IDHotel" />
+      </Principal>
+      <Dependent Role="HotelRooms">
+        <PropertyRef Name="IDHotel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище HotelBaseModelContainer">
+    <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HotelRooms" EntityType="Self.HotelRooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hotels" EntityType="Self.Hotels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MSchange_tracking_history" EntityType="Self.MSchange_tracking_history" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MSchange_tracking_history].[internal_table_name] AS [internal_table_name], 
+    [MSchange_tracking_history].[table_name] AS [table_name], 
+    [MSchange_tracking_history].[start_time] AS [start_time], 
+    [MSchange_tracking_history].[end_time] AS [end_time], 
+    [MSchange_tracking_history].[rows_cleaned_up] AS [rows_cleaned_up], 
+    [MSchange_tracking_history].[cleanup_version] AS [cleanup_version], 
+    [MSchange_tracking_history].[comments] AS [comments]
+    FROM [dbo].[MSchange_tracking_history] AS [MSchange_tracking_history]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Bookings_HotelRooms" Association="Self.FK_Bookings_HotelRooms">
+      <End Role="HotelRooms" EntitySet="HotelRooms" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HotelRooms_Hotels" Association="Self.FK_HotelRooms_Hotels">
+      <End Role="Hotels" EntitySet="Hotels" />
+      <End Role="HotelRooms" EntitySet="HotelRooms" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

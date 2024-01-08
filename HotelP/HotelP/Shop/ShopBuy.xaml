@@ -1,0 +1,67 @@
+﻿<Page x:Class="HotelP.Shop.ShopBuy"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HotelP.Shop"
+      xmlns:rs="clr-namespace:HotelP.Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ShopBuy">
+
+    <StackPanel>
+        <Label Foreground="White" FontSize="32" Content="{x:Static rs:Resources.LabelClarification}" ></Label>
+        <Label Name="RoomNum" Foreground="White" Content="{x:Static rs:Resources.LabelRoomNumber}" Margin="10"></Label>
+        <GroupBox Margin="5" Foreground="White" Header="{x:Static rs:Resources.HeaderSE}">
+            <StackPanel>
+
+                <StackPanel Margin="5" Orientation="Horizontal">
+                    <Label Foreground="White"  Content="{x:Static rs:Resources.LabelBookFrom}" ></Label>
+                    <DatePicker SelectedDateChanged="DataIn_SelectedDateChanged" Name="DataIn"  Width="150">
+                       
+                    </DatePicker >
+                </StackPanel>
+                <StackPanel Margin="5" Orientation="Horizontal">
+                    <Label Foreground="White" Content="{x:Static rs:Resources.LabelBookBefore}"></Label>
+                    <DatePicker Name="DataOut" Width="150"/>
+                </StackPanel>
+
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Foreground="White" Margin="5" Header="{x:Static rs:Resources.HeaderContact}">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Foreground="White" Content="{x:Static rs:Resources.LabelPhone}"></Label>
+                    <TextBox PreviewTextInput="NumberValidationTextBox" Name="PhoneText"  HorizontalAlignment="Left" Width="150" Height="20" Foreground="White"  Background="Black">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Foreground="White" Content="{x:Static rs:Resources.LabelEmail}"></Label>
+                    <TextBox Name="EmailText" HorizontalAlignment="Left"   Width="150" Height="20" Foreground="White"  Background="Black">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+               
+            </StackPanel>
+        </GroupBox>
+        <Label Foreground="White" Margin="10" Name="RoomCost"></Label>
+        <Label Foreground="White" Margin="10" Content="{x:Static rs:Resources.LabelWarning}" ></Label>
+        <Button  Content="{x:Static rs:Resources.ButtonBuy}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" BorderBrush="White" BorderThickness="1" Click="Button_Click" Background="Transparent" Foreground="White" Width="150">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources> 
+        </Button>
+        
+    </StackPanel>
+</Page>

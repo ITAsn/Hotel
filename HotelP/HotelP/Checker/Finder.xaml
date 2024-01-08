@@ -1,0 +1,46 @@
+﻿<Page x:Class="HotelP.Checker.Finder"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HotelP.Checker"
+      xmlns:rs="clr-namespace:HotelP.Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Finder">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Margin="10" Foreground="White" Text="{x:Static rs:Resources.LabelNomOrder}"></TextBlock>
+                <TextBox Name="NomberText" Margin="10" Width="150" Height="20" Foreground="White" 
+                         Background="Black">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            
+        </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Margin="10" Foreground="White" Text="{x:Static rs:Resources.LabelCodeOrder}"></TextBlock>
+                <TextBox Name="CodeText" Margin="10" Width="150" Height="20" Foreground="White"  Background="Black">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+            </StackPanel>
+            <Button Content="{x:Static rs:Resources.ButtonFind}" Background="#FF373434" Foreground="White" Width="150" Height="20" Click="Button_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
