@@ -76,18 +76,40 @@ namespace HotelP.AdminMenu
                             idR = rnd.Next(0, 100000);
                             IdB.Text = idR.ToString();
                         }
-                    HotelRooms hotelRooms = new HotelRooms()
+                    DataGrid hotels = new DataGrid();
+                    hotels.ItemsSource = bd.HotelRooms.ToList();
+                    int countRooms = 0;
+                    for(int i = 0; i < hotels.Items.Count; i++)
                     {
-                        IDRoom = idR,
-                        IDHotel = ComboLocation.SelectedIndex - 1,
-                        Cost = Convert.ToInt32(CostName.Text),
-                        Coments = Com.Text,
-                        RoomsCount = Convert.ToInt32(Count.Text),
-                        TakedTimes = DateTime.Today.Date.ToString(),
-                        ImageRoom = image_bytes
-                    };
-                    bd.HotelRooms.Add(hotelRooms);
-                    bd.SaveChanges();
+                        HotelRooms hotelR = hotels.Items[i] as HotelRooms;
+                        if (hotelR.IDHotel== ComboLocation.SelectedIndex - 1)
+                        {
+                            countRooms++;
+                        }
+                    }
+                    if(countRooms<bd.Hotels.Find(ComboLocation.SelectedIndex - 1).RoomsCount)
+                    {
+                        HotelRooms hotelRooms = new HotelRooms()
+                        {
+                            IDRoom = idR,
+                            IDHotel = ComboLocation.SelectedIndex - 1,
+                            Cost = Convert.ToInt32(CostName.Text),
+                            Coments = Com.Text,
+                            RoomsCount = Convert.ToInt32(Count.Text),
+                            TakedTimes = DateTime.Today.Date.ToString(),
+                            ImageRoom = image_bytes
+                        };
+                        bd.HotelRooms.Add(hotelRooms);
+                        bd.SaveChanges();
+                        WhatYouWant youWant = new WhatYouWant();
+                        App.MainFrame.NavigationService.Navigate(youWant);
+                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("MessBSucces"));
+                    }
+                    else
+                    {
+                        MessageBox.Show(Properties.Resources.ResourceManager.GetString("MessBCount"));
+                    }
+                  
                 }
                 catch (Exception ex)
                 {

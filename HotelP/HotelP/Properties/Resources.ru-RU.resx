@@ -237,6 +237,12 @@
   <data name="MessBChooseDate" xml:space="preserve">
     <value>Выберите дату!!</value>
   </data>
+  <data name="MessBCount" xml:space="preserve">
+    <value>Слишком много комнат</value>
+  </data>
+  <data name="MessBSucces" xml:space="preserve">
+    <value>Успешно</value>
+  </data>
   <data name="MessBWarning" xml:space="preserve">
     <value>Внимание!</value>
   </data>
