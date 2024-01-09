@@ -36,6 +36,9 @@ namespace HotelP
         public static HotelRooms HRoom;//Hotel Room for ShopBuy page
         public static String Cod;//Order's key
         public static int Nom;//Order's nomber
-
+        App()
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-EN");
+        }
     }
 }

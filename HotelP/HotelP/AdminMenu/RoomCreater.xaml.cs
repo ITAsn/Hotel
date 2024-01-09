@@ -18,9 +18,7 @@ using System.Windows.Shapes;
 
 namespace HotelP.AdminMenu
 {
-    /// <summary>
-    /// Логика взаимодействия для RoomCreater.xaml
-    /// </summary>
+//Page for create room
     public partial class RoomCreater : Page
     {
         HotelBaseEntities bd = new HotelBaseEntities();
@@ -61,7 +59,7 @@ namespace HotelP.AdminMenu
             }
         }
 
-        private void CreateRoom(object sender, RoutedEventArgs e)
+        private void CreateRoom(object sender, RoutedEventArgs e)//Insert data to SQL
         {
             if (!String.IsNullOrWhiteSpace(CostName.Text)&&!String.IsNullOrWhiteSpace(Count.Text)&& !String.IsNullOrWhiteSpace(Count.Text) &&ComboLocation.SelectedIndex!=0 && !String.IsNullOrWhiteSpace(Com.Text))
             {
@@ -69,12 +67,19 @@ namespace HotelP.AdminMenu
                 {
                     Random rnd = new Random();
 
-                    bool ok = false;
+                    bool ok = true;
                     if (bd.HotelRooms.Find(idR) != null)
                         while (ok)
                         {
-                            idR = rnd.Next(0, 100000);
-                            IdB.Text = idR.ToString();
+                            if (bd.HotelRooms.Find(idR) != null)
+                            {
+                                idR = rnd.Next(0, 100000);
+                                IdB.Text = idR.ToString();
+                            }
+                            else
+                            {
+                                ok = false;
+                            }
                         }
                     DataGrid hotels = new DataGrid();
                     hotels.ItemsSource = bd.HotelRooms.ToList();
